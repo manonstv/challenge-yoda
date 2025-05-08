@@ -11,11 +11,11 @@ const htmlmin = require('gulp-html-minifier-terser');
 const paths = {
   css: {
     src: './src/css/*.css',
-    dest: './dist/css/'
+    dest: './docs/css/'
   },
   html: {
     src: './src/*.html',
-    dest: './dist/'
+    dest: './docs/'
   }
 };
 
