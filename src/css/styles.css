@@ -282,16 +282,16 @@ html:focus-within {
         -moz-user-select: none;
     font-weight: var(--btn-weight);
     text-align: center;
+}
 
-    &:hover {
-        --btn-hover-border-color: #dfdede;
-        --btn-hover-background: #dfdede;
-        --btn-hover-color: inherit;
-    
-        border-color: var(--btn-hover-border-color);
-        background-color: var(--btn-hover-background);
-        color: var(--btn-hover-color);
-    }
+.btn:hover {
+    --btn-hover-border-color: #dfdede;
+    --btn-hover-background: #dfdede;
+    --btn-hover-color: inherit;
+
+    border-color: var(--btn-hover-border-color);
+    background-color: var(--btn-hover-background);
+    color: var(--btn-hover-color);
 }
 
 /*  Add to Cart Button */
@@ -308,23 +308,23 @@ html:focus-within {
     transform: translate(-50%);
     padding-left: calc(var(--btn-padding-inline) * 2);
     height: var(--product-card-btn-height);
+}
 
-    &:hover {
-        --btn-hover-border-color: var(--color-primary);
-        --btn-hover-background: var(--btn-background);
-        --btn-hover-color: var(--color-primary);
-    }
+.btn-card:hover {
+    --btn-hover-border-color: var(--color-primary);
+    --btn-hover-background: var(--btn-background);
+    --btn-hover-color: var(--color-primary);
+}
 
-    &::before {
-        position: absolute;
-        left: var(--btn-padding-inline);
-        background: center / contain no-repeat
-        url("../assets/images/icon-add-to-cart.svg");
-        width: 1.25em;
-        height: 1.25em;
-        pointer-events: none;
-        content: "";
-    }
+.btn-card::before {
+    position: absolute;
+    left: var(--btn-padding-inline);
+    background: center / contain no-repeat
+    url("../assets/images/icon-add-to-cart.svg");
+    width: 1.25em;
+    height: 1.25em;
+    pointer-events: none;
+    content: "";
 }
 
 /*  Remove Product from Cart Button */
@@ -338,26 +338,26 @@ html:focus-within {
     aspect-ratio: 1/1;
     height: var(--btn-width);
     overflow: hidden;
+}
 
-    &::before {
-        display: block;
-        transition: filter .15s ease-in-out;
-        background: center / cover no-repeat
-        url("../assets/images/icon-remove-item.svg");
-        aspect-ratio: 1/1;
-        width: 1.25rem;
-        height: auto;
-        content: "";
-    }
+.btn-close::before {
+    display: block;
+    transition: filter .15s ease-in-out;
+    background: center / cover no-repeat
+    url("../assets/images/icon-remove-item.svg");
+    aspect-ratio: 1/1;
+    width: 1.25rem;
+    height: auto;
+    content: "";
+}
 
-    &:hover {
-        --btn-hover-border-color: #252525;
-        --btn-hover-background: none;
-    }
+.btn-close:hover {
+    --btn-hover-border-color: #252525;
+    --btn-hover-background: none;
+}
 
-    &:hover::before {
-        filter: brightness(0) saturate(100%);
-    }
+.btn-close:hover:before {
+    filter: brightness(0) saturate(100%);
 }
 
 /*  Confirm Order Button */
@@ -372,12 +372,12 @@ html:focus-within {
     transform: translate(-50%);
     padding-left: calc(var(--btn-padding-inline) * 2);
     height: var(--product-card-btn-height);
+}
 
-    &:hover {
-        --btn-hover-border-color: var(--color-primary-hover);
-        --btn-hover-background: var(--color-primary-hover);
-        --btn-hover-color: #ffffff;
-    }
+.btn-submit:hover {
+    --btn-hover-border-color: var(--color-primary-hover);
+    --btn-hover-background: var(--color-primary-hover);
+    --btn-hover-color: #ffffff;
 }
 
 /*  Text Colors
@@ -467,8 +467,10 @@ html:focus-within {
     --grid-gap: var(--spacing-3xl);
     grid-template-columns: 1fr;
     padding-block: var(--spacing-3xl);
+}
 
-    @media (min-width: 1024px) {
+@media (min-width: 1024px) {
+    .main-layout {
         grid-template-columns: 2fr 1fr;
     }
 }
@@ -566,11 +568,11 @@ html:focus-within {
 .cart__product-unity__price {
     margin-inline: var(--spacing-sm);
     opacity: .875;
+}
 
-    &::before {
-        content: "@";
-        font-size: .875em;
-    }
+.cart__product-unity__price::before {
+    content: "@";
+    font-size: .875em;
 }
 
 /* ===== Cart Order Resume ===== */
@@ -603,13 +605,13 @@ html:focus-within {
     align-items: center;
     gap: var(--spacing-xxs);
     text-align: center;
+}
 
-    &::before {
-        margin-right: var(--spacing-xs);
-        background: center / cover no-repeat url("../assets/images/icon-carbon-neutral.svg");
-        aspect-ratio: 1/1;
-        width: 1.5rem;
-        height: auto;
-        content: "";
-    }
+.cart__tag-label::before {
+    margin-right: var(--spacing-xs);
+    background: center / cover no-repeat url("../assets/images/icon-carbon-neutral.svg");
+    aspect-ratio: 1/1;
+    width: 1.5rem;
+    height: auto;
+    content: "";
 }
