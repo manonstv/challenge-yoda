@@ -8,7 +8,7 @@ A vanilla HTML & CSS front-end project featuring a fully responsive desserts gri
 
 ```pgsql
 .
-├── dist/               ← Generated build output
+├── docs/               ← Generated build output
 │   ├── index.html
 │   └── css/
 │       └── styles.css
@@ -19,7 +19,7 @@ A vanilla HTML & CSS front-end project featuring a fully responsive desserts gri
 │       └── images/
 │   └── css/
 │       └── styles.css
-├── .gitignore          ← Allow src/ et dist/ for better review
+├── .gitignore          ← Allow src/ et docs/ for better review
 ├── gulpfile.js         ← Build tasks (PostCSS, autoprefixer, clean CSS, minify HTML)
 ├── package-lock.json   
 ├── package.json        
@@ -51,7 +51,7 @@ npx gulp --version
 npx gulp dev
 ```
 
-- **Prod build (minified output in dist/):**
+- **Prod build (minified output in docs/):**
 ```bash
 npx gulp build
 ```
