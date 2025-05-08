@@ -9,6 +9,9 @@ A vanilla HTML & CSS front-end project featuring a fully responsive desserts gri
 ```pgsql
 .
 ├── docs/               ← Generated build output
+│   ├── assets/
+│       └── fonts/
+│       └── images/
 │   ├── index.html
 │   └── css/
 │       └── styles.css
