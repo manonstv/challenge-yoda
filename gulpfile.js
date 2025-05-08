@@ -1,13 +1,9 @@
-// gulpfile.js
-
-// Importer les modules nécessaires
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const htmlmin = require('gulp-html-minifier-terser');
 
-// Chemins des fichiers source et destination
 const paths = {
   css: {
     src: './src/css/*.css',
@@ -16,10 +12,13 @@ const paths = {
   html: {
     src: './src/*.html',
     dest: './docs/'
+  },
+  assets: {
+    src: './src/assets/**/*',
+    dest: './docs/assets/'
   }
 };
 
-// Tâche : Minification et autoprefixing du CSS
 function styles() {
   const plugins = [
     autoprefixer({ cascade: false, grid: "autoplace" })
@@ -39,7 +38,6 @@ function styles() {
     .pipe(gulp.dest(paths.css.dest));
 }
 
-// Tâche : Minification du HTML
 function html() {
   return gulp
     .src(paths.html.src)
@@ -52,5 +50,10 @@ function html() {
     .pipe(gulp.dest(paths.html.dest));
 }
 
-// Tâche par défaut : Exécute toutes les tâches
+function assets() {
+  return gulp
+    .src(paths.assets.src)
+    .pipe(gulp.dest(paths.assets.dest));
+}
+
 exports.default = gulp.series(styles, html);
