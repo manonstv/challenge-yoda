@@ -53,7 +53,7 @@ function html() {
 
 function assets() {
   return gulp
-    .src(paths.assets.src)
+    .src(paths.assets.src, { encoding: false })
     .pipe(gulp.dest(paths.assets.dest));
 }
 
