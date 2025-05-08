@@ -1,0 +1,615 @@
+/* ==================================================
+    REBOOT
+===================================================== */
+
+/*  01. Root & environment
+===================================================== */
+
+:root {
+    /*  Color palette */
+    --color-primary: hsl(14, 86%, 42%);
+    --color-primary-hover: hsl(14, 86%, 37%);
+    --rose-50: hsl(25, 53%, 98%);
+    --rose-100: hsl(13, 31%, 94%);
+    --rose-300: hsl(14, 25%, 72%);
+    --rose-400: hsl(7, 20%, 60%);
+    --rose-500: hsl(12, 20%, 44%);
+    --rose-900: hsl(14, 65%, 9%);
+
+    /*  Font family */
+    --font-family-default: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-family-base: var(--font-family-default);
+    
+    /*  Spacing scale */
+    --spacing-xxs : 0.25rem;    /* 4px */
+    --spacing-xs : 0.5rem;      /* 8px */
+    --spacing-sm : 0.75rem;     /* 12px */
+    --spacing-base : 1rem;      /* 16px */
+    --spacing-md : 1.25rem;     /* 20px */
+    --spacing-lg : 1.5rem;      /* 24px */
+    --spacing-xl : 1.75rem;     /* 28px */
+    --spacing-2xl : 2rem;       /* 32px */
+    --spacing-3xl : 3rem;       /* 48px */
+    
+    /*  Radius */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-pill: 2rem;
+    --radius-full: 9999px;
+    
+    /*  z-index */
+    --z-base: 1;
+    --z-above: 10;
+    --z-modal: 1000;
+
+    /*  Semantic palette */
+    --color-heading: var(--rose-900);
+    --font-weight-heading: 700;
+    --line-height-heading: 1.2;
+    --font-family-heading: 'Red Hat Text', sans-serif;
+    --letter-spacing-heading: 0;
+    --color-background: var(--rose-50);
+    --color-surface: #ffffff;
+    --color-highlight: var(--rose-100);
+    --color-border: var(--rose-500);
+    --color-focus-ring: var(--color-primary);
+    --color-text: var(--rose-900);
+    --color-text-muted: var(--rose-500);
+    --color-text-light: var(--rose-400);
+
+    color-scheme: light;
+    font-size: 100%;
+    line-height: 1.6;
+    font-family: var(--font-family-base, system-ui, sans-serif);
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}
+
+@media (forced-colors: active) {
+    * {
+        border-color: ButtonText !important;
+        background-color: transparent !important;
+        color: CanvasText !important;
+    }
+}
+
+/*  02. Box model & layout
+===================================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:where(*, *::before, *::after) {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow-y: scroll;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+body {
+    background-color: var(--color-background);
+    min-height: 100vh;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: inherit;
+    font-family: inherit;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-text-size-adjust: 100%;
+}
+
+main {
+    display: block;
+    isolation: isolate;
+}
+
+/*  03. Typography
+===================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-weight: var(--font-weight-heading);
+    line-height: var(--line-height-heading);
+    font-family: var(--font-family-heading);
+    letter-spacing: var(--letter-spacing-heading);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+
+p {
+    color: inherit;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+
+/*  04. Inline text elements
+===================================================== */
+
+a {
+    color: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    text-underline-offset: .175rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+/*  05. Media elements
+===================================================== */
+
+img, svg, video, picture {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*  06. Lists
+===================================================== */
+
+ul, ol {
+    list-style: none;
+}
+
+/*  07. Forms & interactivity (light)
+===================================================== */
+
+select, option, textarea, input, fieldset, legend, label, button {
+    appearance: none;
+    margin: 0;
+    border: none;
+    background: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: border-box;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+    border-radius: var(--radius-pill);
+    padding: var(--spacing-xs);
+}
+
+dialog {
+    margin: auto;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    padding: var(--spacing-base);
+    max-width: 40rem;
+    color: inherit;
+}
+
+dialog::backdrop {
+    opacity: 0.8;
+    background-color: var(--color-background);
+}
+
+/*  08. Accessibility & helpers
+===================================================== */
+
+:focus {
+    outline-color: transparent;
+}
+
+:focus-visible {
+    outline-color: var(--color-focus-ring);
+    outline-style: solid;
+    outline-width: .125rem;
+    outline-offset: .125rem;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* ==================================================
+    UTILITIES & HELPERS
+===================================================== */
+
+/*  Default Button */
+.btn {
+    --btn-display: flex;
+    --btn-border-width: 1px;
+    --btn-border-style: solid;
+    --btn-border-color: #F0F0F0;
+    --btn-radius: var(--radius-pill);
+    --btn-background: none;
+    --btn-padding-block: var(--spacing-xs);
+    --btn-padding-inline: var(--spacing-lg);
+    --btn-width: fit-content;
+    --btn-color: inherit;
+    --btn-font-size: inherit;
+    --btn-family: inherit;
+    --btn-shadow: none;
+    --btn-weight: 500;
+
+    display: var(--btn-display);
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    cursor: pointer;
+    box-shadow: var(--btn-shadow);
+    border-width: var(--btn-border-width);
+    border-style: var(--btn-border-style);
+    border-color: var(--btn-border-color);
+    border-radius: var(--btn-radius);
+    background-color: var(--btn-background);
+    padding-inline: var(--btn-padding-inline);
+    padding-block: var(--btn-padding-block);
+    width: var(--btn-width);
+    min-width: unset;
+    color: var(--btn-color);
+    font-size: var(--btn-font-size);
+    line-height: inherit;
+    font-family: var(--btn-family);
+    user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+    font-weight: var(--btn-weight);
+    text-align: center;
+
+    &:hover {
+        --btn-hover-border-color: #dfdede;
+        --btn-hover-background: #dfdede;
+        --btn-hover-color: inherit;
+    
+        border-color: var(--btn-hover-border-color);
+        background-color: var(--btn-hover-background);
+        color: var(--btn-hover-color);
+    }
+}
+
+/*  Add to Cart Button */
+.btn-card {
+    --product-card-btn-height: 2.5rem;
+    --btn-display: inline-flex;
+    --btn-border-color: var(--color-border);
+    --btn-radius: var(--radius-pill);
+    --btn-background: var(--color-surface);
+    --btn-font-size: .875rem;
+    position: relative;
+    bottom: calc(var(--product-card-btn-height) / 2);
+    left: 50%;
+    transform: translate(-50%);
+    padding-left: calc(var(--btn-padding-inline) * 2);
+    height: var(--product-card-btn-height);
+
+    &:hover {
+        --btn-hover-border-color: var(--color-primary);
+        --btn-hover-background: var(--btn-background);
+        --btn-hover-color: var(--color-primary);
+    }
+
+    &::before {
+        position: absolute;
+        left: var(--btn-padding-inline);
+        background: center / contain no-repeat
+        url("../assets/images/icon-add-to-cart.svg");
+        width: 1.25em;
+        height: 1.25em;
+        pointer-events: none;
+        content: "";
+    }
+}
+
+/*  Remove Product from Cart Button */
+.btn-close {
+    --btn-radius: var(--radius-full);
+    --btn-background: none;
+    --btn-padding-block: var(--spacing-xxs);
+    --btn-padding-inline: var(--spacing-xxs);
+    --btn-border-color: var(--rose-300);
+    --btn-width: 1.125rem;
+    aspect-ratio: 1/1;
+    height: var(--btn-width);
+    overflow: hidden;
+
+    &::before {
+        display: block;
+        transition: filter .15s ease-in-out;
+        background: center / cover no-repeat
+        url("../assets/images/icon-remove-item.svg");
+        aspect-ratio: 1/1;
+        width: 1.25rem;
+        height: auto;
+        content: "";
+    }
+
+    &:hover {
+        --btn-hover-border-color: #252525;
+        --btn-hover-background: none;
+    }
+
+    &:hover::before {
+        filter: brightness(0) saturate(100%);
+    }
+}
+
+/*  Confirm Order Button */
+.btn-submit {
+    --btn-border-color: var(--color-primary);
+    --btn-background: var(--color-primary);
+    --btn-width: 100%;
+    --btn-color: #ffffff;
+    position: relative;
+    bottom: calc(var(--product-card-btn-height) / 2);
+    left: 50%;
+    transform: translate(-50%);
+    padding-left: calc(var(--btn-padding-inline) * 2);
+    height: var(--product-card-btn-height);
+
+    &:hover {
+        --btn-hover-border-color: var(--color-primary-hover);
+        --btn-hover-background: var(--color-primary-hover);
+        --btn-hover-color: #ffffff;
+    }
+}
+
+/*  Text Colors
+===================================================== */
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.text-light {
+    color: var(--color-text-light);
+}
+
+/*  Text Sizes
+===================================================== */
+
+.text-sm {
+    font-size: .875rem;
+}
+
+/*  Text Symbols
+===================================================== */
+
+.text-price::before {
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+.price-dollar::before {
+    content: "$";
+}
+
+.text-quantity::after {
+    content: "x";
+}
+
+/*  Font Weights
+===================================================== */
+
+.weight-extra {
+    font-weight: 900;
+}
+
+.weight-bold {
+    font-weight: 700;
+}
+
+.weight-medium {
+    font-weight: 500;
+}
+
+/*  Layouts
+===================================================== */
+
+.container {
+    --container-padding: clamp(.875rem, 1vw, 2rem);
+    --container-max: clamp(320px, 90vw, 1440px);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+    width: 100%;
+    max-width: var(--container-max);
+}
+
+.grid {
+    --grid-gap: var(--spacing-base);
+    display: grid;
+    gap: var(--grid-gap);
+}
+
+/* ==================================================
+    PROJECT
+===================================================== */
+
+/*  Layout Wrapper */
+.body-layout {
+    display: grid;
+    align-content: center;
+}
+
+/*  Main Responsive Grid - Product grid to the left, Cart to the right */
+.main-layout {
+    --grid-gap: var(--spacing-3xl);
+    grid-template-columns: 1fr;
+    padding-block: var(--spacing-3xl);
+
+    @media (min-width: 1024px) {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+/*  01. Products Section
+===================================================== */
+
+.products__title {
+    margin-bottom: var(--spacing-2xl);
+    font-size: clamp(1.44rem, 1.3437rem + 0.4813vw, 1.7769rem);
+}
+
+/*  Responsive Products Grid */
+.products__grid {
+    --grid-gap: var(--spacing-2xl);
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+}
+
+/* ===== Product Card ===== */
+
+.product-card {
+    display: grid;
+    justify-content: center;
+}
+
+/*  Header (= img + btn) */
+.product-card__header {
+    position: relative; /* Ensure correct btn position */
+    z-index: var(--z-base);
+    width: fit-content;
+}
+
+.product-card__img {
+    border-radius: var(--radius-sm);
+}
+
+.product-card__body > * {
+    display: block;
+    margin-bottom: var(--spacing-xxs);
+}
+
+.product-card__name {
+    font-size: 1.125rem;
+}
+
+/*  02. Aside Cart
+===================================================== */
+
+/*  Sidebar Container */
+.sidebar {
+    position: sticky;
+    top: var(--spacing-3xl);
+    max-height: calc(100vh - var(--spacing-3xl) * 2); /* Prevents overflow on small screens */
+    overflow-y: auto;
+}
+
+/* =====  Cart Panel ===== */
+.cart {
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+}
+
+.cart__title {
+    margin-bottom: var(--spacing-xs);
+    font-size: clamp(1.2rem, 1.162rem + 0.19vw, 1.333rem);
+}
+
+/* ===== Cart List ===== */
+
+.cart__nav {
+    margin-bottom: var(--spacing-lg);
+}
+
+.cart__item {
+    border-bottom: 1px solid var(--rose-100);
+    padding-block: var(--spacing-sm);
+}
+
+.cart__item-name {
+    margin-bottom: var(--spacing-xxs);
+}
+
+/* ===== Cart Product List ===== */
+
+.cart__product,
+.cart__product-info {
+    display: flex;
+}
+
+.cart__product {
+    justify-content: space-between;
+}
+
+.cart__product-unity__price {
+    margin-inline: var(--spacing-sm);
+    opacity: .875;
+
+    &::before {
+        content: "@";
+        font-size: .875em;
+    }
+}
+
+/* ===== Cart Order Resume ===== */
+
+.cart__order-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.cart__order-list__price {
+    font-size: 1.25rem;
+}
+
+/* ===== Cart Carbon Label ===== */
+
+.cart__tag {
+    margin-bottom: var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    background-color: var(--rose-50);
+    padding: var(--spacing-base);
+    display: grid;
+}
+
+.cart__tag-label {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-xxs);
+    text-align: center;
+
+    &::before {
+        margin-right: var(--spacing-xs);
+        background: center / cover no-repeat url("../assets/images/icon-carbon-neutral.svg");
+        aspect-ratio: 1/1;
+        width: 1.5rem;
+        height: auto;
+        content: "";
+    }
+}
