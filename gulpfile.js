@@ -1,3 +1,4 @@
+
 const gulp = require('gulp');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
@@ -21,7 +22,7 @@ const paths = {
 
 function styles() {
   const plugins = [
-    autoprefixer({ cascade: false, grid: "autoplace" })
+    autoprefixer({ cascade: false, grid: 'autoplace' })
   ];
 
   return gulp
@@ -56,4 +57,4 @@ function assets() {
     .pipe(gulp.dest(paths.assets.dest));
 }
 
-exports.default = gulp.series(styles, html);
+exports.default = gulp.series(styles, html, assets);
